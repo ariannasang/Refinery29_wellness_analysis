@@ -2,7 +2,7 @@
 library(stringr)
 library(dplyr)
 
-df <- readRDS('refinery29.rda')
+df <- readRDS('data/refinery29.rda')
 
 df <- df %>%
   transmute(Titles, Links, raw_txt = Text)
@@ -17,7 +17,7 @@ cat_salary <- str_extract(df$raw_txt, 'Salary:.{0,20}\\$[[:digit:]]+,[[:digit:]]
 cat_salary <- str_replace_all(cat_salary, '[[:punct:]]|[[:alpha:]]', '')
 df$salary <- str_extract(cat_salary,'[[:digit:]]+')
 
-38-sum(str_detect(df$raw_txt, 'Occupation:'))
+38-sum(str_detect(df$raw_txt, 'Occupation:')) # We expect 0 NAs
 cat_occ <- str_extract(df$raw_txt, 'Occupation:.{50}')
 cat_occ <- ifelse(str_detect(cat_occ, 'Salary:.+|Day.+|,.+|and.+|\\(.+'),
                   str_replace(cat_occ, 'Salary:.+|Day.+|,.+|and.+|\\(.+', ''),
@@ -26,7 +26,7 @@ df$occupation <- str_replace(cat_occ, 'Occupation:.','')
 df$occupation[29] <- 'App Developer'
 df$occupation[8] <- 'Writer'
 
-38-sum(str_detect(df$raw_txt, 'Location:'))
+38-sum(str_detect(df$raw_txt, 'Location:')) # We expect 0 NAs
 cat_loc <- str_extract(df$raw_txt, 'Location:.{0,30}')
 cat_loc <- ifelse(str_detect(cat_loc, 'Oc.*|Day.+|Sal.+'), 
                   str_replace(cat_loc, 'Oc.*|Day.+|Sal.+', ''), 
