@@ -13,10 +13,4 @@ Text data was web-scraped from Refinery29's online publication series the 'Feel 
 
 
 ## Conclusions
-Top 5 Most Discussed Topics in the Feel Good Diaries:
-
-* Beverages
-* Emotional Reflection
-* Meal Prep
-* Daily Routine
-* Staying Connected to Family
+![first_c](www/wordpertopicprob.png)
