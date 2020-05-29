@@ -1,6 +1,7 @@
 ![header](www/header.png)
 
-Note 5/29- This project is still in progress! Please check back for more updates. 
+
+*(Note 5/29- This project is still in progress! Please check back for more updates.)*
 ## Research Question
 * How has COVID-19 affected people's health and wellness habits?
 
