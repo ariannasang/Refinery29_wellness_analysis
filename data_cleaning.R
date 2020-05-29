@@ -10,7 +10,7 @@ df <- df %>%
 # Create new columns 
 38-sum(str_detect(df$raw_txt, 'Age:')) # We expect 1 NA
 cat_age <- str_extract(df$raw_txt, 'Age:.[[:digit:]]+')
-df$age <- str_extract(cat_ages, '[[:digit:]]+')
+df$age <- str_extract(cat_age, '[[:digit:]]+')
 
 38-sum(str_detect(df$raw_txt, 'Salary:')) # We expect 5 NAs
 cat_salary <- str_extract(df$raw_txt, 'Salary:.{0,20}\\$[[:digit:]]+,[[:digit:]]+')
@@ -36,11 +36,12 @@ df$location <- str_replace(cat_loc, 'Location:.', "")
 saveRDS(df, 'refinery29_cols.rda')
 
 # Clean text
-df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, '([a-z])([A-Z])', '\\1 \\2'))
-df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, '([0-9])([A-Z])', '\\1 \\2'))
-df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, '([A-z])([0-9])', '\\1 \\2'))
-df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, '([!.;:,])([A-z0-9])', '\\1 \\2'))
-df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, '([A-z0-9])([!.;,])', '\\1 \\2'))
+combinations <- c('([a-z])([A-Z])','([0-9])([A-Z])','([A-z])([0-9])','([!.;:,])([A-z0-9])',
+                  '([A-z0-9])([!.;,])')
+
+for (c in combinations) {
+  df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, c, '\\1 \\2'))
+}
 
 template_words <- c('Today:', 'Age:', 'Location:', 'Occupation:', 'Salary:', 'Day One',
                     'Day Two', 'Day Three', 'Day Four', 'Day Five', 'Day Six', 'Day Seven', 
