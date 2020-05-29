@@ -12,11 +12,16 @@ Text data was web-scraped from Refinery29's online publication series the 'Feel 
 * LDA (Latent Dirchlet Allocation) Topic Modeling
 
 
-## Conclusions
+## Results
 Top 5 Topics Discussed in the Feel Good Diaries:
 
 * Beverages
 * Self-reflection
-* Meal prep
+* Affordable meals
 * Daily routine
 * Staying connected to family
+
+## Discussion
+
+Food and beverage choices, self-reflection, routine, and staying connected to family, seem to be important factors of 'feeling good' across the board.
+
