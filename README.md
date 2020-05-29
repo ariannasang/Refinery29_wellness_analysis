@@ -1,5 +1,5 @@
 # Refinery29's Wellness Analysis
-![header](www/header)
+![header](www/header.png)
 
 ## Research Question
 * How has COVID-19 affected people's health and wellness habits?
