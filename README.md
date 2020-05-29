@@ -1,4 +1,3 @@
-# Refinery29's Wellness Analysis
 ![header](www/header.png)
 
 ## Research Question
