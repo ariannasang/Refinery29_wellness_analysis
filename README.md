@@ -10,6 +10,7 @@ Text data was web-scraped from Refinery29's online publication series the 'Feel 
 
 ## Methods
 * LDA (Latent Dirchlet Allocation) Topic Modeling
+* Time series analysis
 
 
 ## Results
