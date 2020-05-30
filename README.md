@@ -5,7 +5,6 @@
 
 ## Research Questions
 * How has COVID-19 affected women's health and wellness habits?
-* What are the most discussed wellness habits before and during quarantine?
 
 ## Sample
 Text data was web-scraped from Refinery29's online publication series the [Feel Good Diaries](https://www.refinery29.com/en-us/feel-good-diaries?utm_source=facebook.com&utm_medium=adsales&utm_campaign=ES_VenusVeraBradley/Venus&fbclid=IwAR0dbdfif3nApRxN4nrqJI-e7I0wfNaGJliSVc5-hg7n-hjatc3_hrxyo_M), which chronicles women's health and wellness spending habits. There are 38 articles, all published by women and between January 2019 to May 2020. Currently, only the 7 most recent articles were published during the COVID-19 pandemic. This project will be routinely updated to include new articles as more data. 
