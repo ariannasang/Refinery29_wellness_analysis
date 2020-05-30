@@ -3,7 +3,7 @@
 
 *(Note 5/29- This project is still in progress! Please check back for more updates.)*
 
-## Research Questions
+## Research Question
 * How has COVID-19 affected women's health and wellness habits?
 
 ## Sample
