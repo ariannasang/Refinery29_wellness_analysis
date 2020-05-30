@@ -10,12 +10,14 @@ df <- df %>%
 # Create new columns 
 38-sum(str_detect(df$raw_txt, 'Age:')) # We expect 1 NA
 cat_age <- str_extract(df$raw_txt, 'Age:.[[:digit:]]+')
-df$age <- str_extract(cat_age, '[[:digit:]]+')
+df$age <- str_extract(cat_age, '[[:digit:]]+') %>%
+  as.numeric()
 
 38-sum(str_detect(df$raw_txt, 'Salary:')) # We expect 5 NAs
 cat_salary <- str_extract(df$raw_txt, 'Salary:.{0,20}\\$[[:digit:]]+,[[:digit:]]+')
 cat_salary <- str_replace_all(cat_salary, '[[:punct:]]|[[:alpha:]]', '')
-df$salary <- str_extract(cat_salary,'[[:digit:]]+')
+df$salary <- str_extract(cat_salary,'[[:digit:]]+') %>%
+  as.numeric()
 
 38-sum(str_detect(df$raw_txt, 'Occupation:')) # We expect 0 NAs
 cat_occ <- str_extract(df$raw_txt, 'Occupation:.{50}')
@@ -33,7 +35,12 @@ cat_loc <- ifelse(str_detect(cat_loc, 'Oc.*|Day.+|Sal.+'),
                   cat_loc)
 df$location <- str_replace(cat_loc, 'Location:.', "")
 
-saveRDS(df, 'refinery29_cols.rda')
+38-sum(str_detect(df$raw_txt, 'Weekly.[tT]otal:')) # We expect 3 NAs
+cat_weekTotal <- str_extract(df$raw_txt, 'Weekly.[tT]otal:.{1,10}[[:digit:]]+')
+cat_weekTotal <- str_extract(cat_weekTotal, '[0-9\\,.]+') 
+df$weekTotal <- str_replace(cat_weekTotal, ',', '') %>%
+  as.numeric()
+df$weekTotal[38] <- 833.39 # Recovered 1 NA
 
 # Clean text
 combinations <- c('([a-z])([A-Z])','([0-9])([A-Z])','([A-z])([0-9])','([!.;:,])([A-z0-9])',
@@ -53,5 +60,7 @@ for (w in template_words) {
 
 df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, '[[:punct:]]|\\d|\\$', ' '))
 df$text <- unlist(lapply(df$raw_txt, str_replace_all, ' +', ' '))
+
+# Change structure
 saveRDS(df, 'refinery29_cols.rda')
 

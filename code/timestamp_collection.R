@@ -6,7 +6,7 @@ library(lubridate)
 # Merge files to create complete df
 date_df <- read.csv('data/published_date.csv') %>% 
   select(-X)
-incomplete_df <- readRDS('refinery29_cols.rda') 
+incomplete_df <- readRDS('data/refinery29_cols.rda') 
 df <- merge(date_df, incomplete_df, by = c('Titles', 'Links'))
 
 # Correct date
