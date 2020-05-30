@@ -62,5 +62,5 @@ df$raw_txt <- unlist(lapply(df$raw_txt, str_replace_all, '[[:punct:]]|\\d|\\$', 
 df$text <- unlist(lapply(df$raw_txt, str_replace_all, ' +', ' '))
 
 # Change structure
-saveRDS(df, 'refinery29_cols.rda')
+saveRDS(df, 'data/refinery29_cols.rda')
 
