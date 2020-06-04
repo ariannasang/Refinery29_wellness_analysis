@@ -25,9 +25,11 @@ Each topic was labelled after reviewing its 25 top defining terms. The following
 ### Topic Summaries
 
 Routine & Structure is the most discussed topic in the entire series. Each of the other topics are discussed less than 10% in the entire series. Noticeably, despite only 9 articles written during the COVID-19 Pandemic, the COVID-19 Pandemic is the third most discussed topic in the entire series. 
+
 ![top_topics](www/Rplot02.png)
 
 Only four topics were ever the most discussed topic in any of the articles: Quality Time with Partner, School/Community Projects, Routine & Structure, and Family Life.  Routine & Structure is the top topic in 35/38 articles, while the other 3 only occured as a top topic in any article once.
+
 ![top_topics2](www/routine_structure_top_topic.png)
 
 ### Time Series Analysis
