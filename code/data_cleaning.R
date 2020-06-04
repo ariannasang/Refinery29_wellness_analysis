@@ -1,6 +1,5 @@
 # Data Cleaning -- Feel Good Diaries
-library(stringr)
-library(dplyr)
+source('necessary_libs.R')
 
 df <- readRDS('data/refinery29.rda')
 

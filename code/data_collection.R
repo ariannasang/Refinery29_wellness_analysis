@@ -1,9 +1,5 @@
 # Data Collection-- Feel Good Diaries
-
-library(rvest)
-library(dplyr)
-library(stringr)
-
+source('necessary_libs.R')
 
 refinery29_link <- 'https://www.refinery29.com/en-us/feel-good-diaries?utm_source=facebook.com&utm_medium=adsales&utm_campaign=ES_VenusVeraBradley/Venus&fbclid=IwAR0dbdfif3nApRxN4nrqJI-e7I0wfNaGJliSVc5-hg7n-hjatc3_hrxyo_M'
 refinery29 <- read_html(refinery29_link)

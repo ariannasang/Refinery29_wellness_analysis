@@ -1,7 +1,5 @@
 # Collect the timestamps
-library(rvest)
-library(dplyr)
-library(lubridate)
+source('necessary_libs.R')
 
 # Merge files to create complete df
 date_df <- read.csv('data/published_date.csv') %>% 

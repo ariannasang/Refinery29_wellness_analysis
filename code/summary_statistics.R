@@ -1,7 +1,6 @@
 # Summary statistics -- Feel Good Diaries
 
-library(dplyr)
-library(ggplot2)
+source('necessary_libs.R')
 
 df <- readRDS('data/refinery29_cols_time.rda')
 
@@ -12,6 +11,26 @@ df %>%
 round(mean(df$age, na.rm = T))
 mean(df$salary, na.rm=T)
 median(df$salary, na.rm=T)
+
+df %>%
+  select(salary, Pub_date, weekTotal) %>% 
+  filter(!is.na(salary),
+         !is.na(weekTotal),
+         year(Pub_date) == 2020) %>%
+  mutate(covid = Pub_date > as.Date('3/23/2020', format = '%m/%d/%y')) %>%
+  arrange(Pub_date) %>%
+  group_by(covid) %>%
+  summarise(m_wT = mean(weekTotal))  # In 2020,  weekly wellness spending during covid is greater than spending before covid.
+
+df %>% 
+  select(salary, Pub_date, weekTotal) %>% 
+  filter(!is.na(salary),
+         !is.na(weekTotal),
+         year(Pub_date) == 2020) %>%
+  mutate(covid = Pub_date > as.Date('3/23/2020', format = '%m/%d/%y'),
+         week_wellness_pct = weekTotal/salary) %>%
+  group_by(covid) %>%
+  summarise(mean(week_wellness_pct)) # In 2020,  weekly wellness spending pct of salary during covid is greater than spending pct before covid.
 
 df %>%
   filter(!is.na(age),
@@ -74,15 +93,4 @@ df %>%
   ungroup() %>% 
   ggplot(aes(x = Pub_date, y = pct_wellness_exp, color = above_average)) + 
   geom_point() + 
-  labs(title = 'Some women are willing to spend more on wellness during covid than women before covid. ')
-
-df %>%
-  select(salary, Pub_date, weekTotal) %>%
-  filter(!is.na(salary),
-         !is.na(weekTotal)) %>%
-  mutate(covid = Pub_date > as.Date('3/23/2020', format = '%m/%d/%y')) %>%
-  ungroup() %>% 
-  ggplot(aes(x = Pub_date, y = weekTotal, color = covid)) + 
-  geom_point() + 
-  labs(title = 'From July 2019 to January 2020, more women were frugal on wellness spending than women during covid-19.')
-
+  labs(title = 'From July 2019 to January 2020, women were frugal with their wellness spending than women during covid-19.')
