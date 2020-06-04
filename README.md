@@ -16,9 +16,26 @@ Text data was web-scraped from Refinery29's online publication series the [Feel 
 ## Results
 
 ### Topic Modeling
-After tuning the topic models, 14 topics had the best combination of low perplexity, low minimazation, high maximization, and high coherence scores. (These scores can be viewed as LDAtuning graphs in the 'www' file.) 
+After tuning the topic models, 14 topics had the best combination of low perplexity, low minimazation, high maximization, and high coherence scores. (These scores can be viewed as LDAtuning graphs in the 'www' file.) The 14 topics are:
+
+* Subscription Services
+* Quality Time with Partner
+* Leisure Activities
+* School/Community Projets
+* Routine & Structure
+* City Dorm Life
+* Healthy Diet & Exercise
+* Community Engagement
+* Affordable Self-Care
+* COVID-19 Pandemic
+* Spa Treatments
+* Social Activities & Going Out
+* Travel & Getaways
+* Family Life
 
 Each topic was labelled after reviewing its 25 top defining terms. The following graph displays the 14 topics labelled with their 10 most defining terms. Beta scores represent the word per topic probabilities, meaning the likelihood the word would appear in the topic. The average *highest* beta score for these 14 topics is 0.0218, while the median is 0.0204. 
+
+
 
 ![topics](www/Rplot01.png)
 
@@ -28,7 +45,7 @@ Routine & Structure is the most discussed topic in the entire series. Each of th
 
 ![top_topics](www/Rplot02.png)
 
-Only four topics were ever the most discussed topic in any of the articles: Quality Time with Partner, School/Community Projects, Routine & Structure, and Family Life.  Routine & Structure is the top topic in 35/38 articles, while the other 3 only occured as a top topic in any article once.
+Only four topics occurred as the most discussed topic in any of the articles: Quality Time with Partner, School/Community Projects, Routine & Structure, and Family Life.  Routine & Structure is the top topic in 35/38 articles, while the other 3 only occurred as a top topic once.
 
 ![top_topics2](www/routine_structure_top_topic.png)
 
