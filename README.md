@@ -16,7 +16,7 @@ Text data was web-scraped from Refinery29's online publication series the [Feel 
 ## Results
 
 ### Topic Modeling
-After tuning the topic models, 14 topics had the best combination of low perplexity, low minimazation, high maximization, and high coherence scores. (These scores can be viewed as LDAtuning graphs in the 'www' file.) The 14 topics are:
+After tuning the topic models, 14 topics had the best combination of low perplexity, low minimazation, high maximization, and high coherence scores. (These scores can be viewed as LDAtuning graphs in the [www](https://github.com/ariannasang/Refinery29_wellness_analysis/tree/master/www) file.) The 14 topics are:
 
 * Subscription Services
 * Quality Time with Partner
@@ -45,9 +45,7 @@ Routine & Structure is the most discussed topic in the entire series. Each of th
 
 ![top_topics](www/Rplot02.png)
 
-Only four topics occurred as the most discussed topic in any of the articles: Quality Time with Partner, School/Community Projects, Routine & Structure, and Family Life.  Routine & Structure is the top topic in 35/38 articles, while the other 3 only occurred as a top topic once.
-
-![top_topics2](www/routine_structure_top_topic.png)
+Only four topics occurred as the most discussed topic in any of the articles: Quality Time with Partner, School/Community Projects, Routine & Structure, and Family Life.  Routine & Structure is the top topic in 35/38 articles, while the other 3 only occurred as a top topic once. [View graph](https://github.com/ariannasang/Refinery29_wellness_analysis/blob/master/www/routine_structure_top_topic.png)
 
 ### Time Series Analysis
 ![topics_over_time](www/topics_over_time.png)
