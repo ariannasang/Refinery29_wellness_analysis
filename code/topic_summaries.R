@@ -67,31 +67,90 @@ doc_date %>%
 
 
 
-
-
-doc_date %>%
+doc_date <- doc_date %>%
   mutate(topic = factor(topic, 
-                        levels = seq(1,8,1),
-                        labels = topic_names)) %>%
-  filter(topic == 'Family support' | 
-           topic == 'Routine & structure') %>%
-  group_by(topic) %>%
+                        levels = c(1:14),
+                        labels = topic_names))
+
+# Time series analysis 
+doc_date %>%
   arrange(Pub_date) %>%
-  mutate(gamma_over_time = cumsum(gamma)) %>%
-  ggplot(aes(x = Pub_date, y = gamma, color = as.factor(topic))) +
+  group_by(topic) %>%
+  ggplot(aes(x = Pub_date, y = gamma, color = topic)) +
   geom_line() + 
-  labs(title = 'Family support increases during quarantine. Routine and structure
-       decreases during quarantine.')
+  labs(title = 'Topics Discussed Over Time',
+       x = 'Publish Date',
+       y = 'Gamma (probability topic is discussed)', 
+       subtitle = 'Most topics (except Routine & Structure) seem to be unpredictably discussed over time.',
+       color = 'Topics') + 
+  theme(plot.background = element_rect(fill = "lavenderblush2"),
+        panel.background = element_rect(fill = "lavenderblush2"),
+        legend.background = element_rect(fill = "lavenderblush3"))
 
 doc_date %>%
+  arrange(Pub_date) %>%
   group_by(topic) %>%
-  mutate(gamma_over_time = cumsum(gamma))%>% 
-  filter(topic ==1 )
-ungroup() %>%
-  ggplot(aes(x = Pub_date, y = gamma_over_time, color = as.factor(topic))) +
+  ggplot(aes(x = Pub_date, y = gamma, color = topic)) +
+  geom_line() + 
+  labs(title = 'Topics Discussed Over Time',
+       x = 'Publish Date',
+       y = 'Gamma (probability topic is discussed)', 
+       subtitle = 'Most topics (except Routine & Structure) seem to be unpredictably discussed over time.',
+       color = 'Topics') + 
+  theme(plot.background = element_rect(fill = "lavenderblush2"),
+        panel.background = element_rect(fill = "lavenderblush2"),
+        legend.background = element_rect(fill = "lavenderblush3"))
+
+
+doc_date %>%
+  arrange(Pub_date) %>%
+  group_by(topic) %>%
+  mutate(acc_gamma = cumsum(gamma)) %>%
+  ggplot(aes(x = Pub_date, y = acc_gamma, color = topic)) +
   geom_line()
 
+
+topic_over_time_plot <- function(x) {
+  doc_date %>%
+    arrange(Pub_date) %>%
+    filter(topic == x) %>%
+    ggplot(aes(x = Pub_date, y = gamma, color = topic)) +
+    geom_line()
+}
+
+acc_topic_over_time_plot <- function(x) {
+  doc_date %>%
+    arrange(Pub_date) %>%
+    filter(topic == x) %>%
+    mutate(acc_gamma = cumsum(gamma)) %>%
+    ggplot(aes(x = Pub_date, y = acc_gamma, color = topic)) +
+    geom_line()
+}
+
+topic_over_time_plot('COVID-19 Pandemic')
+acc_topic_over_time_plot('COVID-19 Pandemic')
+
+topic_over_time_plot('Routine & Structure')
+acc_topic_over_time_plot('Routine & Structure')
+
+topic_over_time_plot('Travel & Getaways')
+acc_topic_over_time_plot('Travel & Getaways')
+
+
+topic_over_time_plot('Luxurious Spa Treatments')
+topic_over_time_plot('Fun Leisure Activities')
+topic_over_time_plot('Family Life')
+
 doc_date %>%
+  filter(topic == 'Family Life' |
+           topic == 'COVID-19 Pandemic' |
+           topic == 'Routine & Structure') %>%
+  arrange(Pub_date) %>%
   group_by(topic) %>%
-  summarise(tot_gamma = sum(gamma)) %>%
-  arrange(desc(tot_gamma))
+  ggplot(aes(x = Pub_date, y = gamma, color = topic)) +
+  geom_line()
+
+topics.14 %>%
+  filter(topic == 10) %>%
+  arrange(desc(beta)) %>% 
+  mutate(rank = row_number()) %>% View()

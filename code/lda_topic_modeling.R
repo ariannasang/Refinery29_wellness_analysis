@@ -71,5 +71,8 @@ topic_names <- c('Subscription Services',
 
 pretty_topics(topics.14, 14, topic_names)
 
-
-
+# topics.14 %>% 
+#   filter(topic == 10) %>%
+#   arrange(desc(beta)) %>%
+#   top_n(30) %>% View
+# 

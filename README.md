@@ -7,7 +7,7 @@
 * How has COVID-19 affected women's health and wellness habits?
 
 ## Sample
-Text data was web-scraped from Refinery29's online publication series the [Feel Good Diaries](https://www.refinery29.com/en-us/feel-good-diaries?utm_source=facebook.com&utm_medium=adsales&utm_campaign=ES_VenusVeraBradley/Venus&fbclid=IwAR0dbdfif3nApRxN4nrqJI-e7I0wfNaGJliSVc5-hg7n-hjatc3_hrxyo_M), which chronicles women's health and wellness spending habits. There are 38 articles, all written by submission authors in the US and Canada, and published between January 2019 to May 2020. The 9 most recent articles were published during the COVID-19 pandemic. This project will be routinely updated to include new articles as more data. 
+Text data was web-scraped from Refinery29's online publication series the [Feel Good Diaries](https://www.refinery29.com/en-us/feel-good-diaries?utm_source=facebook.com&utm_medium=adsales&utm_campaign=ES_VenusVeraBradley/Venus&fbclid=IwAR0dbdfif3nApRxN4nrqJI-e7I0wfNaGJliSVc5-hg7n-hjatc3_hrxyo_M), which chronicles women's health and wellness spending habits. There are 38 articles, all written by submission authors in the US and Canada, and published between January 2019 to May 2020. The 9 most recent articles were published during the COVID-19 pandemic.
 
 ## Methods
 * LDA (Latent Dirchlet Allocation) Topic Modeling
@@ -21,7 +21,7 @@ After tuning the topic models, 14 topics had the best combination of low perplex
 * Subscription Services
 * Quality Time with Partner
 * Leisure Activities
-* School/Community Projets
+* School/Community Projects
 * Routine & Structure
 * City Dorm Life
 * Healthy Diet & Exercise
@@ -50,6 +50,6 @@ Only four topics occurred as the most discussed topic in any of the articles: Qu
 ![top_topics2](www/routine_structure_top_topic.png)
 
 ### Time Series Analysis
-
+![topics_over_time](www/topics_over_time.png)
 
 ## Discussion
